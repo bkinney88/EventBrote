@@ -21,6 +21,8 @@
        @endif
         @yield('content')
     </div>
+<script src="/js/jquery.js"></script>
+    @include('flashy::message')
 <script src="/js/app.js"></script>
 </body>
 </html>
