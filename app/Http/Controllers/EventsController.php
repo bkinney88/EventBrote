@@ -43,7 +43,7 @@ class EventsController extends Controller
     {
         Event::create(['title' =>$request->title, 'description' =>$request->description]);
 
-        session()->flash('message', 'évènement créer avec succès !');
+        flash('Evènement créer avec succès');
 
         return redirect()->route('home');
     }
@@ -81,6 +81,8 @@ class EventsController extends Controller
     {
         $event->update(['title' =>$request->title, 'description' =>$request->description]);
 
+        flash(sprintf("évènement #%s modifié avec succès !", $event->id));
+
         return redirect()->route('events.show', $event);
     }
 
@@ -93,6 +95,8 @@ class EventsController extends Controller
     public function destroy(Event $event)
     {
         $event->delete();
+
+        flash(sprintf("évènement #%s supprimé avec succès !", $event->id), 'danger');
         return redirect()->route('home');
     }
 }

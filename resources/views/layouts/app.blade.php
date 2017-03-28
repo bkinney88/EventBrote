@@ -11,7 +11,16 @@
 <body>
     @include('layouts.partials._nav')
     <div class="container">
+      @if(session()->has('notification.message'))
+       <div class="alert alert-{{ session()->get('notification.type')}}">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+           <strong>
+               {{ session()->get('notification.message') }}
+           </strong>
+       </div>
+       @endif
         @yield('content')
     </div>
+<script src="/js/app.js"></script>
 </body>
 </html>
