@@ -41,7 +41,11 @@ class EventsController extends Controller
      */
     public function store(EventFormRequest $request)
     {
-        Event::create(['title' =>$request->title, 'description' =>$request->description]);
+        Event::create([
+                'title' =>$request->title,
+                'description' =>$request->description,
+                'slug' =>str_slug($request->title)
+                ]);
 
         Flashy('Evènement créer avec succès', 'http://your-awesome-link.com');
         //flash('');
@@ -71,7 +75,7 @@ class EventsController extends Controller
         return view('events.edit', compact('event'));
     }
 
-    /**
+     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
