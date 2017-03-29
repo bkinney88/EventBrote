@@ -44,7 +44,6 @@ class EventsController extends Controller
         Event::create([
                 'title' =>$request->title,
                 'description' =>$request->description,
-                'slug' =>str_slug($request->title)
                 ]);
 
         Flashy('Evènement créer avec succès', 'http://your-awesome-link.com');
